@@ -1,47 +1,26 @@
 package dev.dmiitry.pong;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 
-public class Game implements Runnable {
-    private Thread thread;
+public class Game {
+    public static String TITLE = "PONG";
+    public static int WIDTH = 800;
+    public static int HEIGHT = 600;
     private boolean shouldClose = false;
-    private Renderer renderer;
-    private Window window;
-    private Input input;
 
-    public Game() {
-        window = new Window(GameConfig.TITLE, GameConfig.WIDTH, GameConfig.HEIGHT);
-        renderer = new Renderer(window);
-        input = new Input(window);
+    public boolean isRunning() {
+        return !shouldClose;
     }
 
-    public void start() {
-        thread = new Thread(this);
-        thread.run();
-    }
-
-    public void stop() {
+    public void handleInput(Input input) {
 
     }
 
-    public void run() {
-        while(!shouldClose) {
-            if(input.isKeyPressed(KeyEvent.VK_ESCAPE)) {
-                shouldClose = true;
-                System.out.println("Closing the game");
-                continue;
-            }
-
-            renderer.clear();
-            renderer.fillRect(0, 0, 100, 100, Color.WHITE);
-            window.update();
-        }
-        window.cleanUp();
+    public void setup() {
+        
     }
 
-    public static void main(String[] args) {
-        Game g = new Game();
-        g.start();
+    public void render(Renderer renderer) {
+        renderer.fillRect(0, 0, 100, 100, Color.RED);
     }
 }

@@ -25,7 +25,7 @@ public class Renderer {
     public void fillRect(int x, int y, int width, int height, Color color) {
         for(int i = y; i < y + height; i++) {
             for(int j = x; j < x + width; j++) {
-                setPixel(i, j, color);
+                setPixel(j, i, color);
             }
         }
     }
